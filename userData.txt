@@ -1,0 +1,15 @@
+#!/bin/bash
+
+exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
+#exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
+yum update -y
+yum install httpd -y
+systemctl enable httpd
+systemctl start httpd
+echo "<h2>Test page</h2>Instance ID: " > /var/www/html/index.html
+curl --silent http://169.254.169.254/latest/meta-data/instance-id/ >> /var/www/html/index.html
+echo "<br>Availability zone: " >> /var/www/html/index.html
+curl --silent http://169.254.169.254/latest/meta-data/placement/availability-zone/ >> /var/www/html/index.html
+echo "<br>IP address: " >> /var/www/html/index.html
+curl --silent http://169.254.169.254/latest/meta-data/public-ipv4 >> /var/www/html/index.html
+
