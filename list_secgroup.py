@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# Author: Juber Nunes
+# Date: 05/03/2019
+# Description: List Security Groups 
+
 import boto3, os
 
 # setup default credentials

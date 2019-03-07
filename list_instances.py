@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# Author: Juber Nunes
+# Date: 05/03/2019
+# Description: List EC2 Instances
 
 import boto3
 
@@ -6,13 +9,14 @@ boto3.setup_default_session(profile_name='wit')
 
 ec2 = boto3.client('ec2')
 
-describe = ec2.describe_instances()['Reservations'] 
+describe = ec2.describe_instances()['Reservations'] ### grabs an object with all instances
 qtd = len(ec2.describe_instances()['Reservations'])
 
-instances = []
+instances = [] ## building an array with instances so the user can pass a number to delete instance rather than an ID
 
 if qtd < 0:
 	print('No instances ' + qtd)
+
 for x in range(qtd):
 	
 	instanceid=describe[x]['Instances'][0]['InstanceId']

@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# Author: Juber Nunes
+# Date: 05/03/2019
+# Description: Create and List Security Group. 
+
+
 
 import boto3, sys, os, stat
 

@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# Author: Juber Nunes
+# Date: 05/03/2019
+# Description: Create and List Keypairs 
+
 
 import boto3, sys, os, stat
 
@@ -9,11 +13,9 @@ def createkeypair(key):
 	ec2 = boto3.client('ec2')
 
 	keypair = ec2.describe_key_pairs()['KeyPairs']
-
 	test=[item for item in keypair if item.get('KeyName')==key]
-	#try:
+
 	if test!=[]:
-	#except Exception as error:
 		print()
 		print('Key already exists, please try with a different name')
 
@@ -25,11 +27,10 @@ def createkeypair(key):
 
 	# capture the key and store it in a file
 	KeyPairOut = str(key_pair.get('KeyMaterial'))
-	#print(KeyPairOut)
-	#print(key + '.pem')
 	outfile.write(KeyPairOut)
 
 	os.chmod(key + '.pem', stat.S_IRUSR)
+
 
 def listkeypairs():
 
@@ -50,9 +51,3 @@ def listkeypairs():
 
 	print('\n')
 
-
-
-### this is to look for an specific key
-#test=[item for item in keypair if item.get('KeyName')=='jntest2']
-#if test==[]:
-#	print('Not found')

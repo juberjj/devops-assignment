@@ -1,18 +1,15 @@
 #!/usr/bin/env python3
+# Author: Juber Nunes
+# Date: 05/03/2019
+# Description: Create Instance - Capturing tagname from user- Creating Security Group and Keypair. 
+
 import boto3,sys, base64,time
 
-#from secgroup_list import listsecgroup
-#from secgroup import creategroup
 from secgroup import listsecgroup
 from secgroup import creategroup
 
 from keypairs import listkeypairs
 from keypairs import createkeypair
-
-
-#from list_keypairs import listkeypairs
-#from create_keypair import createkeypair
-#from copy_scp import copyfile, run_script
 
 
 boto3.setup_default_session(profile_name='wit')

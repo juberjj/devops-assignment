@@ -3,7 +3,6 @@
 # Date: 05/03/2019
 # Description: Main Menu program. 
 
-# Clears the screen
 #clear
 exit=0
 # Controls the menu loop until user hits 0 to exit the menu
